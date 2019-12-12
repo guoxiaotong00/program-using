@@ -1,301 +1,333 @@
-#Python is cool
 
-Zen of python:
 
 ```python
+# The pythoic 
 import this
 ```
 
+# Lambda, map and reduce
 
+'lambda function' The quickest way to define a one-time used function
 
 
+```python
+# Comparing lambda function with normal function
 
-List:
+def square(x):
+    return x * x
 
-1. Lambda, map and reduce, filter
+square_lambda = lambda x: x * x
 
-2. List
+assert square(3) == square_lambda(3)
+print(' square: {}\n square_lambda: {}'.format(square(3), square_lambda(3)))
+```
 
-   1. Index and slicing
 
-      ```python
-      mylist[-1]
-      mylist[::-1]
-      mylist[::2]
-      elems[-2::-2]
-      ```
+```python
+# map
+nums = [1, 2, 3, 4, 5]
+nums_squared = map(square, nums)
+nums_squared_lambda = map(lambda x: x * x, nums)
 
-   2. Packing and swapping 
+print(list(nums_squared))
+print(list(nums_squared_lambda))
+```
 
-      ```python
-      a = [1, 2, 3]
-      x, y, z = a
-      x, y = y, x
-      ```
 
-   3. Joining 
+```python
+list(map(str, nums))
+```
 
-      ```python
-      my_list = ['geeks', 'for', 'geeks'] 
-      print(''.join(my_list))
-      ```
 
-   4. Flattening the list
+```python
+# reduce
+from functools import reduce
 
-      ```python
-      import itertools
-      a = [[1, 2], [3, 4], [5, 6]] 
-      print(list(itertools.chain.from_iterable(a))) 
-      ```
+# computing 5!
+nums = [1, 2, 3, 4, 5]
+product = reduce(lambda x, y: x * y, nums)
+print(product)
+```
 
-      Flatten nested list
+# List
 
-      ```python
-      nested_lists = [[1, 2], [[3, 4], [5, 6], [[7, 8], [9, 10], [[11, [12, 13]]]]]]
-      flatten = lambda x: [y for l in x for y in flatten(l)] if type(x) is list else [x]
-      flatten(nested_lists) 
-      ```
+The most commonly used data type in python
 
-      ```python
-      list_of_lists = [[1], [2, 3], [4, 5, 6]]
-      sum(list_of_lists, [])
-      ```
 
-   5. insert
+```python
+nums = [1, 2, 3, 4, 5]
+weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+```
 
-      ```python
-      elems = list(range(10))
-      elems[1:1] = [0.2, 0.3, 0.5]
-      ```
+## 1. Index and slicing
 
-   6. Enumerate 
 
-      ```python
-      mylist = ['Monday','Tuesday','Thursday','Friday']
-      for i,j in enumerate(mylist):
-          print(i, j)
-          
-      ==>0 Monday
-         1 Tuesday
-         2 Thursday
-         3 Friday
-      ```
+```python
+nums[-1]
+```
 
-3. The usage of "_"
 
-   - Refer to the last executed expression
+```python
+nums[::-1]
+```
 
-   - Ignoring the values
 
-     ```python
-     x, _, y = (1, 2, 3)
-     x, *_, y = (1, 2, 3, 4, 5)
-     for _ in range(10):
-         # do something for 10 times
-         pass
-     ```
+```python
+nums[::2]
+```
 
-   - Private naming
 
-     ```python
-     _internal_name = 'one_nodule' # private variable
-     _internal_version = '1.0' # private variable
-     class _Base: # private class
-         _hidden_factor = 2 # private variable    
-         def __init__(self, price):
-             self._price = price    def _double_price(self): # private method
-             return self._price * self._hidden_factor    
-         def get_double_price(self):
-             return self._double_price() 
-     ```
+```python
+nums[-2::-2]
+```
 
-   - convention could be used for avoiding conflict with Python keywords (convention)
+The basic sytax \[star:end:step\]
 
-     Like: class⎵
 
-   - “mangling” for class variable or functions
+## 2. insert and delete
 
-     Like: ⎵⎵method
 
-     ```python
-     class A:
-         def _single_method(self):
-             pass    
-         def __double_method(self): # for mangling
-             passclass B(A):
-         def __double_method(self): # for mangling
-             pass
-     ```
+```python
+elems = list(range(10))
+elems[1:1] = [0.2, 0.3, 0.5]
+print(elems)
+```
 
-     alternative
+## 3. Packing and swapping
 
-     ```python
-      __all__ = ['Class1', 'Class2']
-         
-     class Class1:
-         pass
-     class Class2:
-         pass
-     class Class3:
-         pass
-     ```
 
-     
+```python
+a = [1, 2, 3]
+x, y, z = a
+print(x, y, z)
+```
 
-   - Magic method
-
-     ```python
-     class A:
-         __init__(self, a):
-             self.a = a
-         __len__(self):
-             return 2
-     ```
-
-   - separating digits of numbers using *underscore* for readability
-
-     ```python
-     a = 1_000_000
-     ```
-
-     
-
-4. Construct the string
-
-   1. C-style string formatting
-
-      ```python
-      name = "John"
-      age = 23
-      print("%s is %d years old." % (name, age))
-      ```
-
-      '%s' can be used to covert any object to a string
-
-      ```python
-      mylist = [1,2,3]
-      print("A list: %s" % mylist)
-      ```
-
-   2. format (Python3+)
 
-      ```python
-      name = "John"
-      age = 23
-      print("{name} is {} years old.".format(name=name, age))
-      print()
-      ```
+```python
+print(x, y)
+x, y = y, x
+print(x, y)
+```
 
-      
+## 4. Flattening
 
-   3. The f-string expression (Python 3.6+)
 
-   ```python
-   expr = 'world'
-   print(f'hello {expr=}')
-   ```
+```python
+list_of_lists = [[1], [2, 3], [4, 5, 6]]
+sum(list_of_lists, [])
+```
 
-   4. Template string (standard library)
+## 5. enumerate and zip
 
-      ```python
-      from string import Template
-      t = Template('Hey, $name!')
-      t.substitute(name=name)
-      ```
 
-      
+```python
+weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+for i,j in enumerate(weekdays):
+    print(i, j)
+```
 
-5. New if expression
 
-   ```python
-   if (n := len(a)) > 10:
-       print(f"List is too long ({n} elements, expected <= 10)")
-   ```
+```python
+nums = [0, 1, 2, 3, 4]
+weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+list(zip(nums, weekdays))
+```
 
-   
+# iterator
 
-6. asyncio
 
-7. iterator
+```python
+new_list = [1, 2, 3, 4]
+new_iterator = iter([1, 2, 3, 4])
+new_iterator
+```
 
-   ```python
-   iter([1, 2, 3, 4])
-   ```
 
-   `map` and `zip` return a iterator not a list (different from python2)
+```python
+for item in new_list:
+    print(item)
+```
 
-   ```python
-   class Test: 
-       # Cosntructor 
-       def __init__(self, limit): 
-           self.limit = limit 
-       # Called when iteration is initialized 
-       def __iter__(self): 
-           self.x = 10
-           return self
-       # To move to next element
-       def __next__(self): 
-           # Store current value ofx 
-           x = self.x 
-           # Stop iteration if limit is reached 
-           if x > self.limit: 
-               raise StopIteration 
-           # Else increment and return old value 
-           self.x = x + 1; 
-           return x 
-       
-   for i in Test(15): 
-       print(i) 
-   ```
 
-   permutation and combination
+```python
+for item in new_iterator:
+    print(item)
+```
 
-   ```python
-   combinations([1, 2, 3], 2)
-   combinations_with_replacement([1, 2], 2)
-   
-   bills = [20, 20, 20, 10, 10, 10, 10, 10, 5, 5, 1, 1, 1, 1, 1]
-   list(it.combinations(bills, 3))
-   ```
 
-   
+```python
+class TestIterator: 
+    # Cosntructor 
+    def __init__(self, limit): 
+        self.limit = limit 
+    # Called when iteration is initialized 
+    def __iter__(self): 
+        self.x = 10
+        return self
+    # To move to next element
+    def __next__(self): 
+        # Store current value ofx 
+        x = self.x 
+        # Stop iteration if limit is reached 
+        if x > self.limit: 
+            raise StopIteration 
+        # Else increment and return old value 
+        self.x = x + 1; 
+        return x 
+    
+for i in TestIterator(15): 
+    print(i) 
+```
 
-   ```python
-   list(it.permutations(['a', 'b', 'c']))
-   
-   ```
 
-   count
+```python
+# different from python2
+nums = [0, 1, 2, 3, 4]
+weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+print(list(zip(nums, weekdays)))
+print(list(map(lambda x: x * x, nums)))
+```
 
-   ```python
-   it.count(start=0.5, step=0.75)
-   ```
 
-   repeat
+```python
+import itertools as it
 
-   ```python
-   repeat(2, 5)
-   ```
+print(list(it.combinations([1, 2, 3], 2)))
+#print(list(it.permutations(['a', 'b', 'c'])))
+print(list(it.repeat(2, 5)))
+```
 
-   flattening
+# The usage of "_"
 
-   ```python
-   list(it.chain.from_iterable([[1, 2, 3], [4, 5, 6]]))
-   ```
+1. Refer to the last executed expression
 
-   
 
+```python
+a = 20
+a
+```
 
 
-A surprise:
+```python
+_
+```
+
+2. Ignoring the values
+
+
+```python
+x, _, y = (1, 2, 3)
+print(x, y)
+```
+
+
+```python
+x, *_, y = (1, 2, 3, 4, 5)
+print(x, y)
+```
+
+
+```python
+for _ in range(3):
+    # do something for 10 times
+    print('Coffee break is great!')
+```
+
+3. convention could be used for avoiding conflict with Python keywords (convention)
+
+4. separating digits of numbers using *underscore* for readability
+
+
+```python
+a = 1_000_000
+a
+```
+
+5. Magic method
+
+
+```python
+class A:
+    def __init__(self, a):
+        self.a = a
+    def __len__(self):
+        return 2
+```
+
+6. Private naming
+
+
+```python
+_internal_name = 'private_name' # private variable
+_internal_version = '1.0' # private variable
+class _Base: # private class
+    _hidden_factor = 2 # private variable    
+    def __init__(self, price):
+        self._price = price    
+    def _double_price(self): # private method
+        return self._price * self._hidden_factor    
+    def get_double_price(self):
+        return self._double_price() 
+```
+
+7. “mangling” for class variable or functions
+
+# Formatting a string
+
+1. C-style string formatting
+
+
+```python
+name = "John"
+age = 23
+print("%s is %d years old." % (name, age))
+```
+
+'%s' can be used to covert any object to a string
+
+
+```python
+mylist = [1,2,3]
+print("A list: %s" % mylist)
+```
+
+2. format (Python3+)
+
+
+```python
+name = "John"
+age = 23
+print("{} is {} years old.".format(name, age))
+print()
+```
+
+3. The f-string expression (Python 3.6+)
+
+
+```python
+name = 'world'
+print(f"hello {name}")
+```
+
+4. Template string (standard library)
+
+
+```python
+from string import Template
+t = Template('Hey, $name!')
+t.substitute(name=name)
+```
+
+# The end
+
+If you think python is so great, please do not forget to check [What's the f*ck Python](https://github.com/satwikkansal/wtfpython)
+
+Also, another surprise:
+
 
 ```python
 import antigravity
 ```
-
-
-
-
 
 Reference:
 
@@ -314,3 +346,10 @@ Reference:
 Find python package:
 
 1. [Awesome-python](https://github.com/vinta/awesome-python)
+
+Python Coding guide
+
+[Google: Python Coding Style](https://google.github.io/styleguide/pyguide.html)
+
+
+
