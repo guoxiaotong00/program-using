@@ -1,7 +1,7 @@
 # [cigale](https://cigale.lam.fr)
 
 ## Installation
-To be updated
+具体过程[在这里](https://cigale.lam.fr/documentation/)
 
 ## CIGALE 运行过程
 第一步：产生pcigale.ini文件，并在其中写入所用数据文件及model
@@ -45,6 +45,7 @@ pcigale run
 pcigale-plots sed
 ```
 
+![最佳拟合的SED。](/Users/guoxiaotong/私人文件/工作日记/compton_thick_AGN/SED/867/out/867_best_model.pdf)
 *注意：要输出最佳拟合的SED，必须在跑程序之前修改 'pcigale.ini 文件中 `save_best_sed = True`*
 
 ## CIGALE数据的准备
@@ -63,4 +64,3 @@ pcigale-plots sed
 - 需要在CIGALE库中找到该filter的名字。（如果没有要自己添加）
 
 **繁琐的过程，一定要细心。**
-
