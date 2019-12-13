@@ -32,6 +32,7 @@ alpha = 1.0, 1.5, 2.0, 2.5
 ```
 
 演示中修改的参数，实际根据自己要求改参数。
+
 *注：最麻烦的过程，一组数据不可能满足所有的源。所以有时候需要修改参数使得这个源能被很好的拟合。*
 
 第三步：跑程序，并输出最佳的拟合
@@ -48,7 +49,7 @@ pcigale-plots sed
 
 ![最佳拟合的SED。](https://github.com/njuastro/programming-day/raw/master/attachments/867_best_model.png)
 
-*注意：要输出最佳拟合的SED，必须在跑程序之前修改 'pcigale.ini 文件中 `save_best_sed = True`*
+*注意：要输出最佳拟合的SED，必须在跑程序之前修改 “pcigale.ini” 文件中 `save_best_sed = True`*
 
 ## CIGALE数据的准备
 
