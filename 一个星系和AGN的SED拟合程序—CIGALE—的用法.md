@@ -1,4 +1,5 @@
-# [cigale](https://cigale.lam.fr)
+# [CIGALE](https://cigale.lam.fr)
+CIGALE是目前被广泛应用的一个SED拟合程序。在这里，我只想介绍一下它的运行过程（怎样拟合一个源的SED？怎样获得它的最佳SED拟合？），和怎样准备SED拟合所用的数据？如果想了解CIGALE的工作原理，建议你看[这篇文章](https://www.aanda.org/articles/aa/pdf/2019/02/aa34156-18.pdf)。
 
 ## Installation
 具体过程[在这里](https://cigale.lam.fr/documentation/)
@@ -63,5 +64,6 @@ pcigale-plots sed
 - Id名字中不要出现减号“-”。（不要问为什么）
 - Filter对应的流量单位“mJy”。
 - 需要在CIGALE库中找到该filter的名字。（如果没有要自己添加）
+- 如果某个源的某个filter没有数据，可以用“-9999.0”。
 
 **繁琐的过程，一定要细心。**
