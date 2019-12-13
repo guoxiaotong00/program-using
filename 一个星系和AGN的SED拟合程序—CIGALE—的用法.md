@@ -2,16 +2,16 @@
 CIGALE是目前被广泛应用的一个SED拟合程序。在这里，我只想介绍一下它的运行过程（怎样拟合一个源的SED？怎样获得它的最佳SED拟合？），和怎样准备SED拟合所用的数据？如果想了解CIGALE的工作原理，建议你看[这篇文章](https://www.aanda.org/articles/aa/pdf/2019/02/aa34156-18.pdf)。
 
 ## Installation
-具体过程[在这里](https://cigale.lam.fr/documentation/)
+安装很简单，具体过程[在这里](https://cigale.lam.fr/documentation/)。
 
 ## CIGALE 运行过程
 第一步：产生pcigale.ini文件，并在其中写入所用数据文件及model
 ```shell
 pcigale init
 ```
-修改文件中：
+修改“pcigale.ini”文件中的内容：
 ```text
-data_file = 209.txt
+data_file = test.txt
 sed_modules = sfhdelayed, bc03, dustatt_modified_starburst, dale2014, redshifting
 analysis_method = pdf_analysis
 cores = 1
@@ -23,7 +23,7 @@ cores = 1
 pcigale genconf
 ```
 
-修改文件中：
+修改“pcigale.ini”文件中的内容：
 ```text
 tau_main = 250, 500, 1000, 2000, 4000, 6000, 8000
 age = 250, 500, 1000, 2000, 4000, 8000, 10000, 12000
