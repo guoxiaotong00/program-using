@@ -45,7 +45,7 @@ pcigale run
 pcigale-plots sed
 ```
 
-![最佳拟合的SED。](https://github.com/njuastro/programming-day/raw/master/attachments/867_best_model.pdf)
+![最佳拟合的SED。](https://github.com/njuastro/programming-day/raw/master/attachments/867_best_model.png)
 
 *注意：要输出最佳拟合的SED，必须在跑程序之前修改 'pcigale.ini 文件中 `save_best_sed = True`*
 
